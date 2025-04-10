@@ -20,13 +20,13 @@ public class InterfaceCreator {
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         return x -> {
-            int y;
-            for(int i =0; i < x.size(); i++) {
-                y = x.get(i);
-                if(y%2 == 0) {
-                    x.add(y);
+            List<Integer> evenNumbers = new ArrayList<>();
+            for (Integer num : x) {
+                if (num % 2 == 0) {
+                    evenNumbers.add(num);
                 }
             }
+            x.addAll(evenNumbers);
         };
     }
 
@@ -43,12 +43,13 @@ public class InterfaceCreator {
     }
 
     public Function<List<String>, Map<String, Integer>> stringSize() {
-        Map<String, Integer> result = new HashMap<>();
-        return l -> {for (String s : l) {result.put(s, s.length());}return result;};
+        return l -> {Map<String, Integer> result = new HashMap<>();for (String s : l) {result.put(s, s.length());}return result;};
     }
 
     public BiFunction<List<Integer>, List<Integer>, List<Integer>> concatList() {
-        List<Integer> result = new ArrayList<>();
-        return (l1,l2)  -> {result.addAll(l1);result.addAll(l2);return result;};
+        return (l1,l2)  -> { List<Integer> result = new ArrayList<>();
+            result.addAll(l1);
+            result.addAll(l2);
+            return result;};
     }
 }

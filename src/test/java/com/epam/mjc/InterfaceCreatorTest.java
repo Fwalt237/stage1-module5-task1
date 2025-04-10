@@ -107,7 +107,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "predicate_{0}_Test")
     @MethodSource(value = "predicateTestCases")
-    void isValuesStartWithUpperCaseTest(
+    void isValuesStartWithUpperCaseTest(String testName,
                                             List<String> sourceList,
                                             boolean expected) {
         boolean actualResult = new InterfaceCreator().isValuesStartWithUpperCase().test(sourceList);
@@ -116,7 +116,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "consumer_{0}_Test")
     @MethodSource(value = "consumerTestCases")
-    void addEvenValuesAtTheEndTest(
+    void addEvenValuesAtTheEndTest(String testName,
                                     List<Integer> sourceList,
                                     List<Integer> expected) {
         new InterfaceCreator().addEvenValuesAtTheEnd().accept(sourceList);
@@ -125,7 +125,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "supplier_{0}_Test")
     @MethodSource(value = "supplierTestCases")
-    void filterCollectionTest(
+    void filterCollectionTest(String testName,
                                List<String> sourceList,
                                List<String> expected) {
         List<String> result = new InterfaceCreator().filterCollection(sourceList).get();
@@ -134,7 +134,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "function_{0}_Test")
     @MethodSource(value = "functionTestCases")
-    void concatListTest(
+    void concatListTest(String testName,
                         List<String> sourceList,
                         Map<String, Integer> expected) {
         Map<String, Integer> result = new InterfaceCreator().stringSize().apply(sourceList);
@@ -143,7 +143,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "biFunction_{0}_Test")
     @MethodSource(value = "biFunctionTestCases")
-    void concatListTest(
+    void concatListTest(String testName,
                           List<Integer> sourceList1,
                           List<Integer> sourceList2,
                           List<Integer> expected) {
