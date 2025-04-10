@@ -60,7 +60,7 @@ public class InterfaceCreatorTest {
                         new ArrayList<>(Arrays. asList("his is a good way to learn Java Functional Interfaces.",
                                                        "Hello world Java.",
                                                        "MJC is a great school")),
-                        new ArrayList<>(Arrays. asList()))
+                        new ArrayList<>(List.of()))
         );
     }
 
@@ -99,7 +99,7 @@ public class InterfaceCreatorTest {
                         new ArrayList<>(Arrays. asList(48, 56, 100, 101, 999, 75, 1, 15, 10, 15, 10, 15, 225, 123, 7594, 1203))),
 
                 Arguments.of("ListWithEmptyFirstArray",
-                        new ArrayList<>(Arrays. asList()),
+                        new ArrayList<>(List.of()),
                         new ArrayList<>(Arrays. asList(10, 15, 10, 15, 225, 123, 7594, 1203)),
                         new ArrayList<>(Arrays. asList(10, 15, 10, 15, 225, 123, 7594, 1203)))
         );
@@ -107,7 +107,7 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "predicate_{0}_Test")
     @MethodSource(value = "predicateTestCases")
-    void isValuesStartWithUpperCaseTest(String name,
+    void isValuesStartWithUpperCaseTest(
                                             List<String> sourceList,
                                             boolean expected) {
         boolean actualResult = new InterfaceCreator().isValuesStartWithUpperCase().test(sourceList);
@@ -116,38 +116,38 @@ public class InterfaceCreatorTest {
 
     @ParameterizedTest(name = "consumer_{0}_Test")
     @MethodSource(value = "consumerTestCases")
-    void addEvenValuesAtTheEndTest(String name,
+    void addEvenValuesAtTheEndTest(
                                     List<Integer> sourceList,
                                     List<Integer> expected) {
         new InterfaceCreator().addEvenValuesAtTheEnd().accept(sourceList);
-        assertEquals(sourceList, expected);
+        assertEquals(expected, sourceList);
     }
 
     @ParameterizedTest(name = "supplier_{0}_Test")
     @MethodSource(value = "supplierTestCases")
-    void filterCollectionTest(String name,
+    void filterCollectionTest(
                                List<String> sourceList,
                                List<String> expected) {
         List<String> result = new InterfaceCreator().filterCollection(sourceList).get();
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     @ParameterizedTest(name = "function_{0}_Test")
     @MethodSource(value = "functionTestCases")
-    void concatListTest(String name,
+    void concatListTest(
                         List<String> sourceList,
                         Map<String, Integer> expected) {
         Map<String, Integer> result = new InterfaceCreator().stringSize().apply(sourceList);
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     @ParameterizedTest(name = "biFunction_{0}_Test")
     @MethodSource(value = "biFunctionTestCases")
-    void concatListTest(String name,
+    void concatListTest(
                           List<Integer> sourceList1,
                           List<Integer> sourceList2,
                           List<Integer> expected) {
         List<Integer> result = new InterfaceCreator().concatList().apply(sourceList1, sourceList2);
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 }
