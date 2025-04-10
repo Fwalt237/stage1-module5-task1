@@ -20,7 +20,7 @@ public class InterfaceCreator {
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         return x -> {
-            for(int i = x.size() - 1; i >= 0; i--) {
+            for(int i =0; i < x.size(); i++) {
                 int y = x.get(i);
                 if(y%2 == 0) {
                     x.add(y);
@@ -33,7 +33,7 @@ public class InterfaceCreator {
         List<String> result = new ArrayList<>();
         for(String s : values) {
             s=s.trim();
-            String[] words = s.split("\\s+");
+            String[] words = s.split(" ");
             if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) =='.' && words.length > 2 ) {
                 result.add(s);
             }
