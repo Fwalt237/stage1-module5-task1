@@ -33,7 +33,7 @@ public class InterfaceCreator {
         List<String> result = new ArrayList<>();
         for(String s : values) {
             s=s.trim();
-            String[] words = s.split(" ");
+            String[] words = s.split("\\s+");
             if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) =='.' && words.length > 2 ) {
                 result.add(s);
             }
