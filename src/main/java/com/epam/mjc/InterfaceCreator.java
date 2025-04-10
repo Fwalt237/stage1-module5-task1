@@ -1,5 +1,7 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -8,25 +10,36 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import static java.lang.Character.isUpperCase;
+
 public class InterfaceCreator {
 
     public Predicate<List<String>> isValuesStartWithUpperCase() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return x ->{for(String s : x) {if(!isUpperCase(s.trim().charAt(0))) {return false;}}return true;};
     }
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return x -> {for(Integer i : x) {if(i%2 == 0) {x.add(i);}}};
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        List<String> result = new ArrayList<>();
+        for(String s : values) {
+            s=s.trim();
+            if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) == '.') {
+                result.add(s);
+            }
+        }
+        return ()->result;
     }
 
     public Function<List<String>, Map<String, Integer>> stringSize() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        Map<String, Integer> result = new HashMap<>();
+        return l -> {for (String s : l) {result.put(s, s.length());}return result;};
     }
 
     public BiFunction<List<Integer>, List<Integer>, List<Integer>> concatList() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        List<Integer> result = new ArrayList<>();
+        return (l1,l2)  -> {result.addAll(l1);result.addAll(l2);return result;};
     }
 }
