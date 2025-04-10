@@ -20,9 +20,11 @@ public class InterfaceCreator {
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         return x -> {
+            int y;
             for(int i =0; i < x.size(); i++) {
-                if(x.get(i)%2 == 0) {
-                    x.add(x.get(i));
+                y = x.get(i);
+                if(y%2 == 0) {
+                    x.add(y);
                 }
             }
         };
