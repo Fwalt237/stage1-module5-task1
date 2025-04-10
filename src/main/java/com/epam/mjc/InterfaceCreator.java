@@ -19,14 +19,22 @@ public class InterfaceCreator {
     }
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-        return x -> {for(Integer i : x) {if(i%2 == 0) {x.add(i);}}};
+        return x -> {
+            for(int i = x.size() - 1; i >= 0; i--) {
+                int y = x.get(i);
+                if(y%2 == 0) {
+                    x.add(y);
+                }
+            }
+        };
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
         List<String> result = new ArrayList<>();
         for(String s : values) {
             s=s.trim();
-            if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) == '.') {
+            String[] words = s.split("\\s+");
+            if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) =='.' && words.length > 2 ) {
                 result.add(s);
             }
         }
