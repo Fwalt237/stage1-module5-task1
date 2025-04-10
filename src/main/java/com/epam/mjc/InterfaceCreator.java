@@ -21,9 +21,8 @@ public class InterfaceCreator {
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
         return x -> {
             for(int i =0; i < x.size(); i++) {
-                int y = x.get(i);
-                if(y%2 == 0) {
-                    x.add(y);
+                if(x.get(i)%2 == 0) {
+                    x.add(x.get(i));
                 }
             }
         };
@@ -34,7 +33,7 @@ public class InterfaceCreator {
         for(String s : values) {
             s=s.trim();
             String[] words = s.split("\\s+");
-            if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) =='.' && words.length > 2 ) {
+            if(isUpperCase(s.charAt(0)) && s.charAt(s.length()-1) =='.' && words.length > 3 ) {
                 result.add(s);
             }
         }
